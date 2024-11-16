@@ -1,0 +1,29 @@
+{
+    "name": "webpack-ts",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "webpack-dev-server",
+        "build": "webpack",
+        "format": "biome lint --write . ; biome format --write ."
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "1.9.4",
+        "@types/react": "^18.3.12",
+        "@types/react-dom": "^18.3.1",
+        "html-webpack-plugin": "^5.6.3",
+        "ts-loader": "^9.5.1",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.6.3",
+        "webpack": "^5.96.1",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^5.1.0"
+    }
+}
