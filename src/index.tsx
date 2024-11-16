@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
-import { Counter } from "./Counter";
+import { App } from "./App";
 
-// biome-ignore lint/style/noNonNullAssertion:
-createRoot(document.getElementById("root")!).render(<Counter />);
+const root = document.getElementById("root");
+if (!root) throw new Error("cant get root elm");
+createRoot(root).render(<App />);
