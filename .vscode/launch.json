@@ -5,7 +5,9 @@
             "type": "chrome",
             "request": "launch",
             "name": "launch chrome",
-            "url": "http://localhost:5173"
+            "url": "http://localhost:5173",
+            "sourceMaps": true, // viteでは必要 何故？
+            "webRoot": "${workspaceFolder}/src" // viteでは必要 何故？
         }
     ]
 }

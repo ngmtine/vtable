@@ -20,6 +20,7 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true
     },
+    // webpack.configをtsで書く用
     "ts-node": {
         "compilerOptions": {
             "module": "CommonJS"

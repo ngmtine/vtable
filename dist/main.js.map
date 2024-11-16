@@ -1,1 +1,0 @@
-{"version":3,"file":"main.js","mappings":";;;;;AAAa;AACb;AACA;AACA;AACA;AACA","sources":["webpack://webpack-ts/./src/index.ts"],"sourcesContent":["\"use strict\";\nconst component = () => {\n    const element = document.createElement(\"div\");\n    return element;\n};\ndocument.body.appendChild(component());\n"],"names":[],"sourceRoot":""}
