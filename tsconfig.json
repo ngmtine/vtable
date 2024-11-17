@@ -15,16 +15,7 @@
         /* type checking */
         "strict": true,
         "noUnusedLocals": true,
-        "noUnusedParameters": true,
-
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true
-    },
-    // webpack.configをtsで書く用
-    "ts-node": {
-        "compilerOptions": {
-            "module": "CommonJS"
-        }
+        "noUnusedParameters": true
     },
     "include": ["src"],
     "exclude": ["node_modules", "dist"]
