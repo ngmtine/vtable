@@ -1,5 +1,7 @@
 {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "biomejs.biome",
-    "editor.unicodeHighlight.allowedCharacters": { "　": true }
+    "editor.unicodeHighlight.allowedCharacters": {
+        "　": true
+    }
 }

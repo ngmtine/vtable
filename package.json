@@ -4,15 +4,14 @@
     "version": "0.0.1",
     "author": "ngmtine",
     "license": "MIT",
-    "exports": {
-        ".": {
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.cjs"
-        }
-    },
+    "type": "module",
+    "main": "./dist/vtable.cjs",
+    "module": "./dist/vtable.mjs",
+    "types": "./dist/index.d.ts",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "vite build && tsc --emitDeclarationOnly",
+        "update": "npm run build && cd example && npm install",
         "format": "biome lint --write . ; biome format --write ."
     },
     "dependencies": {
@@ -27,9 +26,5 @@
         "@vitejs/plugin-react": "^4.3.3",
         "typescript": "^5.6.3",
         "vite": "^5.4.11"
-    },
-    "peerDependencies": {
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0"
     }
 }

@@ -12,6 +12,10 @@
         "resolveJsonModule": true,
         "moduleResolution": "Bundler",
 
+        /* type declaration */
+        "declaration": true,
+        "declarationDir": "dist",
+
         /* type checking */
         "strict": true,
         "noUnusedLocals": true,

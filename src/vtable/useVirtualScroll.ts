@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { SyntheticEvent } from "react";
 
 // 追加で画面外に描画する行数
-const EXTRA_ITEM_COUNT = 3;
+const EXTRA_ITEM_COUNT = 10;
 
 // 返り値の型
 interface UseVirtualScrollReturns<T> {
@@ -44,10 +44,9 @@ export const useVirtualScroll = <T>(args: UseVirtualScrollArgs<T>): UseVirtualSc
     const handleScroll = (event: SyntheticEvent) => {
         const { scrollTop } = event.currentTarget;
         const nextStartIndex = Math.floor(scrollTop / rowHeight);
-        console.log(nextStartIndex);
         setStartIndex(nextStartIndex);
     };
 
-    // とりあえず全部返す
+    // 返却
     return { startIndex, endIndex, displayCount, displayingRecordList, handleScroll, offsetY };
 };

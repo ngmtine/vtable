@@ -1,0 +1,21 @@
+{
+    "name": "vtable-example",
+    "description": "vtable examples",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "vtable": "file:.."
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^4.3.3",
+        "typescript": "^5.6.3",
+        "vite": "^5.4.11"
+    }
+}
