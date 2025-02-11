@@ -1,0 +1,16 @@
+{
+    "overrides": [
+        {
+            "files": ["**/*.html", "**/*.vue"],
+            "options": {
+                "printWidth": 200,
+                "tabWidth": 4,
+                "useTabs": false,
+                "semi": true,
+                "singleQuote": false,
+                "vueIndentScriptAndStyle": true,
+                "htmlWhitespaceSensitivity": "ignore"
+            }
+        }
+    ]
+}

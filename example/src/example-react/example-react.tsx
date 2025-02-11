@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Vtable } from "vtable";
-import { getData } from "../../util/data";
-import type { DataItem } from "../../util/data";
+import type { DataItem } from "../util/data";
+import { getData } from "../util/data";
 import { bodyRowStyle, cellStyle, rowStyle } from "./example-react.css";
 
 const HeaderRow = () => (

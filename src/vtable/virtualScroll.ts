@@ -3,7 +3,7 @@ export interface VirtualScrollParams<T> {
     rowHeight: number; // 1 行の高さ
     recordList: T[]; // 全レコードの配列
     scrollTop: number; // 現在のスクロール位置（縦方向）
-    extraItemCount?: number; // 追加で描画する行数（デフォルトは 10）
+    extraItemCount?: number; // 追加で描画する行数
 }
 
 export interface VirtualScrollReturns<T> {
@@ -15,7 +15,7 @@ export interface VirtualScrollReturns<T> {
 }
 
 export const calculateVirtualScroll = <T>(props: VirtualScrollParams<T>): VirtualScrollReturns<T> => {
-    const { containerHeight, rowHeight, recordList, scrollTop, extraItemCount = 10 } = props;
+    const { containerHeight, rowHeight, recordList, scrollTop, extraItemCount = 40 } = props;
     const displayCount = Math.floor(containerHeight / rowHeight) + extraItemCount;
     const extraCountHalf = Math.floor(extraItemCount / 2);
     const startIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - extraCountHalf);
