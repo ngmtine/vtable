@@ -1,7 +1,7 @@
 import type { UIEvent } from "react";
 import { useCallback, useState } from "react";
-import type { VirtualScrollReturns } from "./virtualScroll";
-import { calculateVirtualScroll } from "./virtualScroll";
+import type { VirtualScrollReturns } from "../virtualScroll";
+import { calculateVirtualScroll } from "../virtualScroll";
 
 interface UseVirtualScrollArgs<T> {
     containerHeight: number;
@@ -23,7 +23,12 @@ export const useVirtualScroll = <T>(props: UseVirtualScrollArgs<T>): UseVirtualS
     }, []);
 
     return {
-        ...calculateVirtualScroll({ containerHeight, rowHeight, recordList, scrollTop }),
+        ...calculateVirtualScroll({
+            containerHeight,
+            rowHeight,
+            recordList,
+            scrollTop,
+        }),
         handleScroll,
     };
 };

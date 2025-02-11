@@ -21,6 +21,6 @@
         "noUnusedLocals": true,
         "noUnusedParameters": true
     },
-    "include": ["src"],
+    "include": ["src", "src/vtable/vue/vue-shims.d.ts"],
     "exclude": ["node_modules", "dist"]
 }

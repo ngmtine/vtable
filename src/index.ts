@@ -1,4 +1,5 @@
 export { calculateVirtualScroll } from "./vtable/virtualScroll";
-export { Vtable } from "./vtable/vtable";
-export { useVirtualScroll } from "./vtable/useVirtualScroll";
-export type { BodyRowProps, VtableProps } from "./vtable/vtable";
+export { VtableReact } from "./vtable/react/vtable-react";
+export { useVirtualScroll } from "./vtable/react/useVirtualScroll";
+export { default as VtableVue } from "./vtable/vue/vtable-vue.vue";
+export type { BodyRowProps, VtableProps } from "./vtable/types";

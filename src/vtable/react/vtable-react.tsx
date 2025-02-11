@@ -1,24 +1,9 @@
 import type { ReactElement } from "react";
+import type { VtableProps } from "../types";
 import { useVirtualScroll } from "./useVirtualScroll";
 
-// BodyRowに渡すpropsの型
-export interface BodyRowProps<T> {
-    record: T;
-}
-
-// Vtableに渡すpropsの型
-export interface VtableProps<T> {
-    recordList: T[];
-    containerHeight: number; // 画面上に描画するテーブル高さ
-    rowHeight: number; // 行高さ
-    HeaderRow?: () => ReactElement; // thead以下に挿入する行コンポーネント 渡さなければthead描画しない
-    BodyRow: (props: BodyRowProps<T>) => ReactElement; // tbody以下に挿入する行コンポーネント
-    FooterRow?: () => ReactElement; // tfoot以下に挿入する行コンポーネント 渡さなければtfoot描画しない
-    uniqueKey: keyof T;
-}
-
 // 仮想スクロールテーブルコンポーネント
-export const Vtable = <T,>(props: VtableProps<T>) => {
+export const VtableReact = <T,>(props: VtableProps<T, ReactElement>) => {
     const { recordList, containerHeight, rowHeight, HeaderRow, BodyRow, FooterRow, uniqueKey } = props;
 
     // カスタムフックから諸々取得
@@ -36,7 +21,14 @@ export const Vtable = <T,>(props: VtableProps<T>) => {
             >
                 {/* HeaderRow が渡されているならば thead を描画 */}
                 {HeaderRow ? (
-                    <thead style={{ position: "sticky", top: 0, backgroundColor: "white", zIndex: 1 }}>
+                    <thead
+                        style={{
+                            position: "sticky",
+                            top: 0,
+                            backgroundColor: "white",
+                            zIndex: 1,
+                        }}
+                    >
                         <HeaderRow />
                     </thead>
                 ) : null}

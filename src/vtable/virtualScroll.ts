@@ -21,5 +21,11 @@ export const calculateVirtualScroll = <T>(props: VirtualScrollParams<T>): Virtua
     const startIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - extraCountHalf);
     const endIndex = Math.min(startIndex + displayCount, recordList.length);
     const offsetY = startIndex * rowHeight;
-    return { startIndex, endIndex, displayCount, offsetY, displayingRecordList: recordList.slice(startIndex, endIndex) };
+    return {
+        startIndex,
+        endIndex,
+        displayCount,
+        offsetY,
+        displayingRecordList: recordList.slice(startIndex, endIndex),
+    };
 };

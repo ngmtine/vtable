@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Vtable } from "vtable";
+import { VtableReact } from "vtable";
 import type { DataItem } from "../util/data";
 import { getData } from "../util/data";
 import { bodyRowStyle, cellStyle, rowStyle } from "./example-react.css";
@@ -45,7 +45,7 @@ export const ExampleReact = () => {
     return (
         <div>
             <h1>Sample Virtual Scroll Table</h1>
-            <Vtable
+            <VtableReact
                 recordList={data}
                 containerHeight={containerHeight}
                 rowHeight={rowHeight}
