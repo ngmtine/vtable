@@ -6,7 +6,7 @@ export interface BodyTrProps<T> {
     record: T;
 }
 
-// Vtableに渡すspropsの型
+// Vtableに渡すpropsの型
 export interface VtableProps<T> {
     recordList: T[];
     containerHeight: number; // 画面上に描画するテーブル高さ
