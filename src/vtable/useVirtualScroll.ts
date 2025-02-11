@@ -1,52 +1,29 @@
-import { useState } from "react";
-import type { SyntheticEvent } from "react";
+import type { UIEvent } from "react";
+import { useCallback, useState } from "react";
+import type { VirtualScrollReturns } from "./virtualScroll";
+import { calculateVirtualScroll } from "./virtualScroll";
 
-// 追加で画面外に描画する行数
-const EXTRA_ITEM_COUNT = 10;
-
-// 返り値の型
-interface UseVirtualScrollReturns<T> {
-    startIndex: number; // 画面上のテーブル先頭行インデックス
-    endIndex: number; // 画面上のテーブル最終行インデックス
-    displayCount: number; // レンダリングする行の数
-    displayingRecordList: T[]; // 画面に表示する行オブジェクトの配列
-    offsetY: number; // スクロール対象要素と、画面上のテーブル先頭行の距離
-    handleScroll: (event: SyntheticEvent) => void; // スクロールハンドラ
-}
-
-// 引数の型
 interface UseVirtualScrollArgs<T> {
-    containerHeight: number; // コンテナ要素（画面上に描画する領域）の高さ
-    rowHeight: number; // 行高さ
-    recordList: T[]; // 行オブジェクトの配列
+    containerHeight: number;
+    rowHeight: number;
+    recordList: T[];
 }
 
-// 仮想スクロールを使用するためのカスタムフック
-export const useVirtualScroll = <T>(args: UseVirtualScrollArgs<T>): UseVirtualScrollReturns<T> => {
-    const { containerHeight, rowHeight, recordList } = args;
+interface UseVirtualScrollReturns<T> extends VirtualScrollReturns<T> {
+    handleScroll(event: UIEvent<HTMLDivElement>): void;
+}
 
-    // 画面に表示する行の数
-    const displayCount = Math.floor(containerHeight / rowHeight + EXTRA_ITEM_COUNT);
+export const useVirtualScroll = <T>(props: UseVirtualScrollArgs<T>): UseVirtualScrollReturns<T> => {
+    const { containerHeight, rowHeight, recordList } = props;
 
-    // 画面1行目に表示する行のインデックス
-    const [startIndex, setStartIndex] = useState(0);
+    const [scrollTop, setScrollTop] = useState(0);
 
-    // 画面最終行に表示する行のインデックス
-    const endIndex = Math.min(startIndex + displayCount, recordList.length);
+    const handleScroll = useCallback((event: UIEvent<HTMLDivElement>) => {
+        setScrollTop(event.currentTarget.scrollTop);
+    }, []);
 
-    // 画面に表示するレコードの配列
-    const displayingRecordList = recordList.slice(startIndex, endIndex);
-
-    // 各行の相対表示位置
-    const offsetY = startIndex * rowHeight;
-
-    // スクロールハンドラ
-    const handleScroll = (event: SyntheticEvent) => {
-        const { scrollTop } = event.currentTarget;
-        const nextStartIndex = Math.floor(scrollTop / rowHeight);
-        setStartIndex(nextStartIndex);
+    return {
+        ...calculateVirtualScroll({ containerHeight, rowHeight, recordList, scrollTop }),
+        handleScroll,
     };
-
-    // 返却
-    return { startIndex, endIndex, displayCount, displayingRecordList, handleScroll, offsetY };
 };

@@ -1,8 +1,8 @@
 import type { ReactElement } from "react";
 import { useVirtualScroll } from "./useVirtualScroll";
 
-// BodyTrに渡すpropsの型
-export interface BodyTrProps<T> {
+// BodyRowに渡すpropsの型
+export interface BodyRowProps<T> {
     record: T;
 }
 
@@ -11,33 +11,33 @@ export interface VtableProps<T> {
     recordList: T[];
     containerHeight: number; // 画面上に描画するテーブル高さ
     rowHeight: number; // 行高さ
-    HeaderTr?: () => ReactElement; // thead以下に挿入する行コンポーネント 渡さなければthead描画しない
-    BodyTr: (props: BodyTrProps<T>) => ReactElement; // tbody以下に挿入する行コンポーネント
-    FooterTr?: () => ReactElement; // tfoot以下に挿入する行コンポーネント 渡さなければtfoot描画しない
+    HeaderRow?: () => ReactElement; // thead以下に挿入する行コンポーネント 渡さなければthead描画しない
+    BodyRow: (props: BodyRowProps<T>) => ReactElement; // tbody以下に挿入する行コンポーネント
+    FooterRow?: () => ReactElement; // tfoot以下に挿入する行コンポーネント 渡さなければtfoot描画しない
     uniqueKey: keyof T;
 }
 
 // 仮想スクロールテーブルコンポーネント
 export const Vtable = <T,>(props: VtableProps<T>) => {
-    const { recordList, containerHeight, rowHeight, HeaderTr, BodyTr, FooterTr, uniqueKey } = props;
+    const { recordList, containerHeight, rowHeight, HeaderRow, BodyRow, FooterRow, uniqueKey } = props;
 
     // カスタムフックから諸々取得
     const { displayingRecordList, endIndex, handleScroll, startIndex } = useVirtualScroll<T>({ recordList, containerHeight, rowHeight });
 
     return (
-        <div //
+        <div
             id="vtableWrapper"
             onScroll={handleScroll}
             style={{ height: containerHeight, overflow: "scroll" }}
         >
-            <table //
+            <table
                 id="vtable"
                 style={{ borderCollapse: "collapse", width: "100%" }}
             >
-                {/* HeaderTr が渡されているならば thead を描画 */}
-                {HeaderTr ? (
+                {/* HeaderRow が渡されているならば thead を描画 */}
+                {HeaderRow ? (
                     <thead style={{ position: "sticky", top: 0, backgroundColor: "white", zIndex: 1 }}>
-                        <HeaderTr />
+                        <HeaderRow />
                     </thead>
                 ) : null}
 
@@ -47,7 +47,7 @@ export const Vtable = <T,>(props: VtableProps<T>) => {
 
                     {displayingRecordList.map((record: T) => {
                         return (
-                            <BodyTr //
+                            <BodyRow
                                 key={record[uniqueKey] as number}
                                 record={record}
                             />
@@ -58,10 +58,10 @@ export const Vtable = <T,>(props: VtableProps<T>) => {
                     <tr style={{ height: (recordList.length - endIndex) * rowHeight }} />
                 </tbody>
 
-                {/* FooterTr が渡されているならば tfoot を描画 */}
-                {FooterTr ? (
+                {/* FooterRow が渡されているならば tfoot を描画 */}
+                {FooterRow ? (
                     <tfoot>
-                        <FooterTr />
+                        <FooterRow />
                     </tfoot>
                 ) : null}
             </table>

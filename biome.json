@@ -10,7 +10,8 @@
         "enabled": true,
         "lineWidth": 200,
         "indentStyle": "space",
-        "indentWidth": 4
+        "indentWidth": 4,
+        "attributePosition": "multiline"
     },
     "json": {
         "parser": { "allowComments": true },

@@ -1,24 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Vtable } from "vtable";
-import { rowStyle, cellStyle, bodyRowStyle } from "./sample1.css";
+import { getData } from "../../util/data";
+import type { DataItem } from "../../util/data";
+import { bodyRowStyle, cellStyle, rowStyle } from "./example-react.css";
 
-interface DataItem {
-    id: number;
-    name: string;
-    age: number;
-    address: string;
-}
-
-const generateData = (rows: number): DataItem[] => {
-    return Array.from({ length: rows }, (_, index) => ({
-        id: index + 1,
-        name: `User ${index + 1}`,
-        age: Math.floor(Math.random() * 80) + 20,
-        address: `Address ${index + 1}`,
-    }));
-};
-
-const HeaderTr = () => (
+const HeaderRow = () => (
     <tr style={rowStyle}>
         <td style={cellStyle}>ID</td>
         <td style={cellStyle}>Name</td>
@@ -27,7 +13,7 @@ const HeaderTr = () => (
     </tr>
 );
 
-const BodyTr = ({ record }: { record: DataItem }) => (
+const BodyRow = ({ record }: { record: DataItem }) => (
     <tr style={{ ...rowStyle, ...bodyRowStyle(record.id) }}>
         <td style={cellStyle}>{record.id}</td>
         <td style={cellStyle}>{record.name}</td>
@@ -36,8 +22,8 @@ const BodyTr = ({ record }: { record: DataItem }) => (
     </tr>
 );
 
-export const Sample1 = () => {
-    const data = generateData(100_000);
+export const ExampleReact = () => {
+    const data = getData(100_000);
     const rowHeight = 30;
 
     // テーブルコンテナ高さ保持（ウィンドウリサイズで変動するため 仮想スクロールテーブル用）
@@ -59,12 +45,12 @@ export const Sample1 = () => {
     return (
         <div>
             <h1>Sample Virtual Scroll Table</h1>
-            <Vtable //
+            <Vtable
                 recordList={data}
                 containerHeight={containerHeight}
                 rowHeight={rowHeight}
-                HeaderTr={HeaderTr}
-                BodyTr={BodyTr}
+                HeaderRow={HeaderRow}
+                BodyRow={BodyRow}
                 uniqueKey="id"
             />
         </div>

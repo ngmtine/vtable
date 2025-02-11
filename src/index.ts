@@ -1,3 +1,3 @@
-export { Vtable } from "./vtable/Vtable";
+export { Vtable } from "./vtable/vtable";
 export { useVirtualScroll } from "./vtable/useVirtualScroll";
-export type { BodyTrProps, VtableProps } from "./vtable/Vtable";
+export type { BodyRowProps, VtableProps } from "./vtable/vtable";
