@@ -2,6 +2,10 @@
 
 simple virtual scroll table for react, vue
 
+# example
+
+[example](https://ngmtine.github.io/vtable/)
+
 # usage
 
 read example dir

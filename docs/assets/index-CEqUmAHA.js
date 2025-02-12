@@ -1,0 +1,2 @@
+import"./index-CuX8Uz3M.js";import{c as r,j as e}from"./client-f9UO3wli.js";const t=()=>e.jsxs("div",{children:[e.jsx("h1",{children:"Vtable Examples - Home"}),e.jsxs("nav",{children:[e.jsx("a",{href:"example-react/index.html",children:"Example React"}),e.jsx("br",{}),e.jsx("a",{href:"example-vue/index.html",children:"Example Vue"})]})]});r.createRoot(document.getElementById("root")).render(e.jsx(t,{}));
+//# sourceMappingURL=index-CEqUmAHA.js.map
