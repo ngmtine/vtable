@@ -11,14 +11,11 @@ export const VtableReact = <T,>(props: VtableProps<T, ReactElement>) => {
 
     return (
         <div
-            id="vtableWrapper"
+            id="vtableContainer"
             onScroll={handleScroll}
             style={{ height: containerHeight, overflow: "scroll" }}
         >
-            <table
-                id="vtable"
-                style={{ borderCollapse: "collapse", width: "100%" }}
-            >
+            <table id="vtable">
                 {/* HeaderRow が渡されているならば thead を描画 */}
                 {HeaderRow ? (
                     <thead

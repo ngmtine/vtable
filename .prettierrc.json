@@ -1,7 +1,7 @@
 {
     "overrides": [
         {
-            "files": ["**/*.html", "**/*.vue"],
+            "files": ["**/*.html", "**/*.css", "**/*.vue"],
             "options": {
                 "printWidth": 200,
                 "tabWidth": 4,

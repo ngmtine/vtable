@@ -13,3 +13,8 @@ export const getData = (rows: number): DataItem[] => {
         address: `Address ${index + 1}`,
     }));
 };
+
+// 偶奇背景色のスタイルプロパティ生成
+export const getBodyRowStyle = (id: number) => ({
+    backgroundColor: id % 2 === 0 ? "#f9f9f9" : "#ffffff",
+});

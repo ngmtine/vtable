@@ -24,8 +24,8 @@
 </script>
 
 <template>
-    <div id="vtableWrapper" :style="{ height: containerHeight + 'px', overflow: 'scroll' }" @scroll="onScroll">
-        <table id="vtable" style="border-collapse: collapse; width: 100%">
+    <div id="vtableContainer" :style="{ height: containerHeight + 'px', overflow: 'scroll' }" @scroll="onScroll">
+        <table id="vtable">
             <thead v-if="$slots.header" style="position: sticky; top: 0; background-color: white; z-index: 1">
                 <slot name="header" />
             </thead>
@@ -34,9 +34,9 @@
                 <!-- 上部フィラー行 -->
                 <tr :style="{ height: virtualData.startIndex * rowHeight + 'px' }"></tr>
 
-                <tr v-for="record in virtualData.displayingRecordList" :key="record[uniqueKey]">
+                <template v-for="record in virtualData.displayingRecordList" :key="record[uniqueKey]">
                     <slot name="body" :record="record" />
-                </tr>
+                </template>
 
                 <!-- 下部フィラー行 -->
                 <tr :style="{ height: (recordList.length - virtualData.endIndex) * rowHeight + 'px' }"></tr>
