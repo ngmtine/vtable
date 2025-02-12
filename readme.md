@@ -1,6 +1,6 @@
 # vtable
 
-simple virtual scroll table for react, vue
+simple virtual scroll table for vanilla, react, vue
 
 # example
 
@@ -14,4 +14,4 @@ read example dir
 
 ・publish as npm package  
 ・support other library  
-・change package name（vtable is ultra boring）  
+・change package name（vtable is ultra boring）

@@ -1,26 +1,26 @@
 <script lang="ts" setup>
-    import { computed, ref, toRefs } from "vue";
-    import type { VtableProps } from "../types";
-    import { calculateVirtualScroll } from "../virtualScroll";
+import { computed, ref, toRefs } from "vue";
+import type { VtableProps } from "../types";
+import { calculateVirtualScroll } from "../virtualScroll";
 
-    const props = defineProps<Pick<VtableProps<unknown>, "recordList" | "containerHeight" | "rowHeight" | "uniqueKey">>();
-    const { recordList, containerHeight, rowHeight, uniqueKey } = toRefs(props);
+const props = defineProps<Pick<VtableProps<unknown>, "recordList" | "containerHeight" | "rowHeight" | "uniqueKey">>();
+const { recordList, containerHeight, rowHeight, uniqueKey } = toRefs(props);
 
-    const scrollTop = ref(0);
-    const onScroll = (e: Event) => {
-        const target = e.target as HTMLElement;
-        scrollTop.value = target.scrollTop;
-    };
+const scrollTop = ref(0);
+const onScroll = (e: Event) => {
+    const target = e.target as HTMLElement;
+    scrollTop.value = target.scrollTop;
+};
 
-    const virtualData = computed(() => {
-        return calculateVirtualScroll({
-            containerHeight: containerHeight.value,
-            rowHeight: rowHeight.value,
-            recordList: recordList.value,
-            scrollTop: scrollTop.value,
-            extraItemCount: 40,
-        });
+const virtualData = computed(() => {
+    return calculateVirtualScroll({
+        containerHeight: containerHeight.value,
+        rowHeight: rowHeight.value,
+        recordList: recordList.value,
+        scrollTop: scrollTop.value,
+        extraItemCount: 40,
     });
+});
 </script>
 
 <template>

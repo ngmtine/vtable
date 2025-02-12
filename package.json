@@ -12,7 +12,9 @@
         "dev": "vite",
         "build": "vite build && tsc --emitDeclarationOnly",
         "update": "npm run build && cd example && npm install",
-        "format": "prettier ./* --write ; biome lint --write . ; biome format --write ."
+        "format": "npm run __prettier ; npm run __biome",
+        "__prettier": "prettier --write 'src/**/*.{html,css,vue}' 'example/src/**/*.{html,css,vue}'",
+        "__biome": "biome lint --write . ; biome format --write ."
     },
     "dependencies": {
         "react": "^19.0.0",

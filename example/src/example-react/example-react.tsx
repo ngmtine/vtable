@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { VtableReact } from "vtable";
 import type { DataItem } from "../util/data";
-import { getBodyRowStyle, getData } from "../util/data";
+import { getData, getParityClass } from "../util/data";
 import "../util/table.css";
 
 const HeaderRow = () => (
@@ -14,11 +14,20 @@ const HeaderRow = () => (
 );
 
 const BodyRow = ({ record }: { record: DataItem }) => (
-    <tr style={getBodyRowStyle(record.id)}>
+    <tr className={getParityClass(record.id)}>
         <td className="cell">{record.id}</td>
         <td className="cell">{record.name}</td>
         <td className="cell">{record.age}</td>
         <td className="cell">{record.address}</td>
+    </tr>
+);
+
+const FooterRow = () => (
+    <tr className="header-row">
+        {/* biome-ignore format: */}
+        <th className="cell" colSpan={4}>
+      Footer Content
+    </th>
     </tr>
 );
 
@@ -51,6 +60,7 @@ export const ExampleReact = () => {
                 rowHeight={rowHeight}
                 HeaderRow={HeaderRow}
                 BodyRow={BodyRow}
+                FooterRow={FooterRow}
                 uniqueKey="id"
             />
         </div>

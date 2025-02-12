@@ -17,6 +17,7 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 index: "src/index.html",
+                "example-vanilla": "src/example-vanilla/index.html",
                 "example-react": "src/example-react/index.html",
                 "example-vue": "src/example-vue/index.html",
             },

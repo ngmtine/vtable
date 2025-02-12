@@ -17,5 +17,5 @@
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "cSpell.words": ["ngmtine", "vtable"]
+    "cSpell.words": ["ngmtine", "vtable", "aliceblue"]
 }

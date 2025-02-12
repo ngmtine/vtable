@@ -14,7 +14,5 @@ export const getData = (rows: number): DataItem[] => {
     }));
 };
 
-// 偶奇背景色のスタイルプロパティ生成
-export const getBodyRowStyle = (id: number) => ({
-    backgroundColor: id % 2 === 0 ? "#f9f9f9" : "#ffffff",
-});
+// 偶奇背景色のクラス付与
+export const getParityClass = (id: number) => (id % 2 === 0 ? "even" : "odd");
