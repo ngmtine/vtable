@@ -1,0 +1,1 @@
+{"version":3,"file":"index-4GFq-Ydv.js","sources":["../../example/src/main.tsx"],"sourcesContent":["// import { createRoot } from \"react-dom/client\";\n\n// const Home = () => {\n//     return <div></div>;\n// };\n\n// createRoot(document.getElementById(\"root\") as HTMLElement).render(<Home />);\n\nconsole.log(\"hello\");\n"],"names":[],"mappings":"6CAQA,QAAQ,IAAI,OAAO"}

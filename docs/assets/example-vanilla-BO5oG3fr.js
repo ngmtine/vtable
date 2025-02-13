@@ -1,4 +1,4 @@
-import"./index-CuX8Uz3M.js";import{g as a,o as i,a as s}from"./data-CGD6comi.js";const g=()=>`
+import"./modulepreload-polyfill-B5Qt9EMX.js";import{g as a,o as i,a as s}from"./data-CmShL1ey.js";const g=()=>`
 <tr>
     <td>ID</td>
     <td>Name</td>
@@ -17,4 +17,4 @@ import"./index-CuX8Uz3M.js";import{g as a,o as i,a as s}from"./data-CGD6comi.js"
     <td colspan="4" style="text-align: center;">Footer Content</td>
 </tr>
 `,m=t=>{const r=a(1e5);let e=window.innerHeight-100;const o=30,n=new i({recordList:r,containerHeight:e,rowHeight:o,uniqueKey:"id",headerRenderer:g,bodyRenderer:c,footerRenderer:l,extraItemCount:40});n.mount(t),window.addEventListener("resize",()=>{e=window.innerHeight-100,n.containerHeight=e,n.tableContainer.style.height=`${e}px`,n.renderRows()})},d=document.getElementById("root");d&&m(d);
-//# sourceMappingURL=example-vanilla-C36H0b7Y.js.map
+//# sourceMappingURL=example-vanilla-BO5oG3fr.js.map

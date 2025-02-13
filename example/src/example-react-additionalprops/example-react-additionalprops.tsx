@@ -13,12 +13,12 @@ const TheadTr = () => (
     </tr>
 );
 
-const TbodyTr = ({ record }: { record: DataItem }) => (
+const TbodyTr = ({ record, handleClick }: { record: DataItem; handleClick: () => void }) => (
     <tr className={getParityClass(record.id)}>
-        <td>{record.id}</td>
-        <td>{record.name}</td>
-        <td>{record.age}</td>
-        <td>{record.address}</td>
+        <td onClick={handleClick}>{record.id}</td>
+        <td onClick={handleClick}>{record.name}</td>
+        <td onClick={handleClick}>{record.age}</td>
+        <td onClick={handleClick}>{record.address}</td>
     </tr>
 );
 
@@ -29,6 +29,7 @@ const TfootTr = () => (
 );
 
 export const ExampleReact = () => {
+    console.log("test!!");
     const data = getData(100_000);
     const rowHeight = 30;
 
@@ -48,10 +49,12 @@ export const ExampleReact = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    const handleClick = () => console.log("hello");
+
     return (
         <div>
             <h1>Vtable React Example</h1>
-            <VtableReact
+            <VtableReact<DataItem, { tbodyTr: { handleClick: () => void } }>
                 recordList={data}
                 containerHeight={containerHeight}
                 rowHeight={rowHeight}
@@ -59,6 +62,11 @@ export const ExampleReact = () => {
                 TbodyTr={TbodyTr}
                 TfootTr={TfootTr}
                 uniqueKey="id"
+                additionalProps={{
+                    tbodyTr: {
+                        handleClick: handleClick,
+                    },
+                }}
             />
         </div>
     );

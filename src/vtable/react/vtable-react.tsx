@@ -3,8 +3,8 @@ import type { VtableProps } from "../types";
 import { useVirtualScroll } from "./useVirtualScroll";
 
 // 仮想スクロールテーブルコンポーネント
-export const VtableReact = <T,>(props: VtableProps<T, ReactElement>) => {
-    const { recordList, containerHeight, rowHeight, HeaderRow, BodyRow, FooterRow, uniqueKey } = props;
+export const VtableReact = <T, O extends object>(props: VtableProps<T, ReactElement, O>) => {
+    const { recordList, containerHeight, rowHeight, TheadTr, TbodyTr, TfootTr, uniqueKey, additionalProps } = props;
 
     // カスタムフックから諸々取得
     const { displayingRecordList, endIndex, handleScroll, startIndex } = useVirtualScroll<T>({ recordList, containerHeight, rowHeight });
@@ -14,10 +14,11 @@ export const VtableReact = <T,>(props: VtableProps<T, ReactElement>) => {
             id="vtableContainer"
             onScroll={handleScroll}
             style={{ height: containerHeight, overflow: "scroll" }}
+            {...additionalProps?.container}
         >
             <table id="vtable">
-                {/* HeaderRow が渡されているならば thead を描画 */}
-                {HeaderRow ? (
+                {/* TheadTr が渡されているならば thead を描画 */}
+                {TheadTr ? (
                     <thead
                         style={{
                             position: "sticky",
@@ -25,20 +26,22 @@ export const VtableReact = <T,>(props: VtableProps<T, ReactElement>) => {
                             backgroundColor: "white",
                             zIndex: 1,
                         }}
+                        {...additionalProps?.thead}
                     >
-                        <HeaderRow />
+                        <TheadTr {...additionalProps?.theadTr} />
                     </thead>
                 ) : null}
 
-                <tbody>
+                <tbody {...additionalProps?.tbody}>
                     {/* 上部フィラー行 */}
                     <tr style={{ height: startIndex * rowHeight }} />
 
                     {displayingRecordList.map((record: T) => {
                         return (
-                            <BodyRow
+                            <TbodyTr
                                 key={record[uniqueKey] as number}
                                 record={record}
+                                {...additionalProps?.tbodyTr}
                             />
                         );
                     })}
@@ -47,10 +50,10 @@ export const VtableReact = <T,>(props: VtableProps<T, ReactElement>) => {
                     <tr style={{ height: (recordList.length - endIndex) * rowHeight }} />
                 </tbody>
 
-                {/* FooterRow が渡されているならば tfoot を描画 */}
-                {FooterRow ? (
-                    <tfoot>
-                        <FooterRow />
+                {/* TfootTr が渡されているならば tfoot を描画 */}
+                {TfootTr ? (
+                    <tfoot {...additionalProps?.tfoot}>
+                        <TfootTr {...additionalProps?.tfootTr} />
                     </tfoot>
                 ) : null}
             </table>

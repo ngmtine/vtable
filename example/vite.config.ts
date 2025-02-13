@@ -20,6 +20,7 @@ export default defineConfig({
                 "example-vanilla": "src/example-vanilla/index.html",
                 "example-react": "src/example-react/index.html",
                 "example-vue": "src/example-vue/index.html",
+                "example-react-additionalprops": "src/example-react-additionalprops/index.html",
             },
         },
     },
