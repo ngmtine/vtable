@@ -5,11 +5,11 @@ import { getData, getParityClass } from "../util/data";
 // ヘッダーtrのレンダラ
 const headerRenderer = (): string => {
     return `
-<tr class="header-row">
-    <th class="cell">ID</th>
-    <th class="cell">Name</th>
-    <th class="cell">Age</th>
-    <th class="cell">Address</th>
+<tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Age</td>
+    <td>Address</td>
 </tr>
 `;
 };
@@ -18,10 +18,10 @@ const headerRenderer = (): string => {
 const bodyRenderer = (record: DataItem): string => {
     return `
 <tr class="${getParityClass(record.id)}">
-    <td class="cell">${record.id}</td>
-    <td class="cell">${record.name}</td>
-    <td class="cell">${record.age}</td>
-    <td class="cell">${record.address}</td>
+    <td>${record.id}</td>
+    <td>${record.name}</td>
+    <td>${record.age}</td>
+    <td>${record.address}</td>
 </tr>
 `;
 };
@@ -30,7 +30,7 @@ const bodyRenderer = (record: DataItem): string => {
 const footerRenderer = (): string => {
     return `
 <tr>
-    <td class="cell" colspan="4" style="text-align: center;">Footer Content</td>
+    <td colspan="4" style="text-align: center;">Footer Content</td>
 </tr>
 `;
 };

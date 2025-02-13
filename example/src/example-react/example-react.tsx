@@ -5,29 +5,26 @@ import { getData, getParityClass } from "../util/data";
 import "../util/table.css";
 
 const HeaderRow = () => (
-    <tr className="header-row">
-        <th className="cell">ID</th>
-        <th className="cell">Name</th>
-        <th className="cell">Age</th>
-        <th className="cell">Address</th>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Address</td>
     </tr>
 );
 
 const BodyRow = ({ record }: { record: DataItem }) => (
     <tr className={getParityClass(record.id)}>
-        <td className="cell">{record.id}</td>
-        <td className="cell">{record.name}</td>
-        <td className="cell">{record.age}</td>
-        <td className="cell">{record.address}</td>
+        <td>{record.id}</td>
+        <td>{record.name}</td>
+        <td>{record.age}</td>
+        <td>{record.address}</td>
     </tr>
 );
 
 const FooterRow = () => (
-    <tr className="header-row">
-        {/* biome-ignore format: */}
-        <th className="cell" colSpan={4}>
-      Footer Content
-    </th>
+    <tr>
+        <td colSpan={4}>Footer Content</td>
     </tr>
 );
 

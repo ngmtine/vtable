@@ -3,23 +3,39 @@
 }
 
 #vtable {
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0px;
 }
 
-.header-row {
+thead tr {
     background-color: aliceblue;
     position: sticky;
     top: 0;
     z-index: 1;
 }
 
-.cell {
+thead td {
+    font-weight: bold;
+}
+
+td {
     padding: 4px;
-    border-bottom: 1px solid #ddd;
     width: 200px;
     min-width: 200px;
     max-width: 200px;
     border: 1px solid gray;
+}
+
+tbody td {
+    border-top: none;
+}
+
+td:not(:first-child) {
+    border-left: none;
+}
+
+tfoot td {
+    border-top: none;
 }
 
 tr.even td {
